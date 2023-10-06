@@ -13,8 +13,3 @@ class Matrix_Calulator:
         det = np.linalg.det(new_matrix)
         return print(det)
         
-
-if __name__ == '__main__':
-    test_matrix = [[1,2], [3,4]]
-    testing_variable = Matrix_Calulator(test_matrix)
-    testing_variable.determinate_calculator()
