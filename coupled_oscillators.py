@@ -14,7 +14,7 @@ except:
     ValueError
 
 # Define coupling strengths 
-Coupling_values = input("Enter coupling values separated by commas (defined as k_ij and x_i): ")
+Coupling_values = input("Enter coupling values separated by commas: ")
 input_list = Coupling_values.split(',')
 Coupling_matrix = np.array(input_list, dtype=float).reshape(n, n)
 
@@ -29,4 +29,5 @@ num_columns = eigenvectors.shape[1]
 # Iterate through the columns and print each column
 for i in range(num_columns):
     column_i = eigenvectors[:, i]
-    print("Column", i + 1, ":", column_i)
+    print("Eigenvector", i + 1, ":", column_i)
+    print()
