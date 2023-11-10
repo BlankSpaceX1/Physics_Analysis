@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 
 # Number of oscillators
@@ -6,12 +7,26 @@ n = int(input('Enter the number of oscillators: '))
 
 
 # Define frequencies 
-omega = input("Enter frequencies separated by comma: ")
-
 try:
-    omega_array = np.array(omega.split(','), dtype=float)
+    oscillator_systems = {}
+    for i in range(n):
+        mass = eval(input('Enter the mass of oscillator {}: '.format(i+1)))
+        spring_constant = eval(input('Enter the spring constant of oscillator {}: '.format(i+1)))
+        oscillator_systems['Oscillator {}'.format(i)] = [mass, spring_constant]
+
 except:
-    ValueError
+    if mass != int() or mass != float():
+        raise ValueError('Invalid entry for oscillator mass')
+    
+    if spring_constant != int() or spring_constant != float():
+        raise ValueError('Invalid entry for oscillator spring constant')
+
+omega_array = []    
+for key, values in oscillator_systems.items():
+    oscillator_mass, oscillator_spring_const = values
+    omega = math.sqrt(oscillator_spring_const / oscillator_mass)
+    omega_array.append(omega)
+    
 
 # Define coupling strengths 
 Coupling_values = input("Enter coupling values separated by commas: ")
